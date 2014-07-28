@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
 /**
  * {@link MagnifyingView} test activity.
@@ -35,7 +36,18 @@ public class MagnifyingViewTestActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        View magnifiedView = findViewById(R.id.test_image);
+        ImageView magnifiedView = (ImageView) findViewById(R.id.test_image);
+        Intent intent = getIntent();
+
+        if (Intent.ACTION_VIEW.equals(intent.getAction()))
+        {
+            magnifiedView.setImageURI(intent.getData());
+        }
+        else
+        {
+            magnifiedView.setImageResource(R.drawable.candies);
+        }
+
         mMagnifyingView = new MagnifyingView(this);
         mMagnifyingView.attach(magnifiedView);
 
