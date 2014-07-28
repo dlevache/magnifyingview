@@ -1,3 +1,18 @@
+/*
+ * Copyright 2014 elbaquero
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ */
 package fr.elbaquero.magnifyingview;
 
 import android.annotation.TargetApi;
@@ -247,29 +262,36 @@ public final class MagnifyingView extends View
     {
         mIsMagnifyingEnabled = isEnabled;
 
-        if (mIsMagnifyingEnabled && (mAttachedView != null))
+        if (mAttachedView != null)
         {
-            mAttachedView.setOnTouchListener(new OnTouchListener()
+            if (mIsMagnifyingEnabled)
             {
-                @Override
-                public boolean onTouch(final View v, final MotionEvent event)
+                mAttachedView.setOnTouchListener(new OnTouchListener()
                 {
-                    switch (event.getAction())
+                    @Override
+                    public boolean onTouch(final View v, final MotionEvent event)
                     {
-                        case MotionEvent.ACTION_DOWN:
-                        case MotionEvent.ACTION_MOVE:
-                            magnifyRegion((int) event.getX(), (int) event.getY());
-                            return true;
+                        switch (event.getAction())
+                        {
+                            case MotionEvent.ACTION_DOWN:
+                            case MotionEvent.ACTION_MOVE:
+                                magnifyRegion((int) event.getX(), (int) event.getY());
+                                return true;
 
-                        case MotionEvent.ACTION_UP:
-                            stopMagnifying();
-                            return true;
+                            case MotionEvent.ACTION_UP:
+                                stopMagnifying();
+                                return true;
 
-                        default:
-                            return false;
+                            default:
+                                return false;
+                        }
                     }
-                }
-            });
+                });
+            }
+            else
+            {
+                mAttachedView.setOnTouchListener(null);
+            }
         }
     }
 
@@ -372,10 +394,12 @@ public final class MagnifyingView extends View
             setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
     }
-    
+
     /**
      * Conversion between dip and pixels.
-     * @param dp the dip value to convert into pixels.
+     * 
+     * @param dp
+     *            the dip value to convert into pixels.
      */
     private int dpToPx(final int dp)
     {
