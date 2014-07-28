@@ -72,6 +72,35 @@ public final class PreferencesManager
     }
 
     /**
+     * Save an float into the {@link SharedPreferences}.
+     * 
+     * @param key
+     *            the float storage key.
+     * @param value
+     *            the float value.
+     */
+    public void saveFloat(final String key, final float value)
+    {
+        Editor editor = mSharedPreferences.edit();
+        editor.putFloat(key, value);
+        editor.commit();
+    }
+
+    /**
+     * Read an float in the {@link SharedPreferences}.
+     * 
+     * @param key
+     *            the float storage key.
+     * @param defaultValue
+     *            the float default value.
+     * @return the read value.
+     */
+    public float readFloat(final String key, final float defaultValue)
+    {
+        return mSharedPreferences.getFloat(key, defaultValue);
+    }
+
+    /**
      * Save an integer into the {@link SharedPreferences}.
      * 
      * @param key

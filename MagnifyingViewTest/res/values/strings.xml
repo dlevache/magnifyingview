@@ -6,6 +6,7 @@
     
     <!-- Test activity -->
     <string name="settings_activate">Activate magnifying</string>
+    <string name="settings_scale">Scale</string>
     <string name="settings_radius">Radius</string>
     <string name="settings_border_width">Border width</string>
     <string name="settings_border_color">Border color</string>

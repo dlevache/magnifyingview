@@ -33,6 +33,9 @@ public class MagnifyingViewSettingsActivity extends Activity
     /** Activation check box. */
     private CheckBox mActivateSettingValueView;
 
+    /** Scale edit text. */
+    private EditText mScaleSettingValueView;
+
     /** Radius edit text. */
     private EditText mRadiusSettingValueView;
 
@@ -73,6 +76,7 @@ public class MagnifyingViewSettingsActivity extends Activity
         settingsView.setVisibility(View.GONE);
 
         View activateSettingView = findViewById(R.id.settings_activate);
+        View scaleSettingView = findViewById(R.id.settings_scale);
         View radiusSettingView = findViewById(R.id.settings_radius);
         View borderWidthSettingView = findViewById(R.id.settings_border_width);
         View borderColorSettingView = findViewById(R.id.settings_border_color);
@@ -80,6 +84,7 @@ public class MagnifyingViewSettingsActivity extends Activity
         View offsetYSettingView = findViewById(R.id.settings_offset_y);
 
         mActivateSettingValueView = (CheckBox) findViewById(R.id.settings_activate_value);
+        mScaleSettingValueView = (EditText) findViewById(R.id.settings_scale_value);
         mRadiusSettingValueView = (EditText) findViewById(R.id.settings_radius_value);
         mBorderWidthValue = (EditText) findViewById(R.id.settings_border_width_value);
         mBorderColorValue = findViewById(R.id.settings_border_color_value);
@@ -120,6 +125,7 @@ public class MagnifyingViewSettingsActivity extends Activity
         };
 
         activateSettingView.setOnClickListener(onClickListener);
+        scaleSettingView.setOnClickListener(onClickListener);
         radiusSettingView.setOnClickListener(onClickListener);
         borderWidthSettingView.setOnClickListener(onClickListener);
         borderColorSettingView.setOnClickListener(onClickListener);
@@ -160,6 +166,8 @@ public class MagnifyingViewSettingsActivity extends Activity
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
         mActivateSettingValueView.setChecked(preferencesManager.readBoolean(Constants.PREFERENCES_KEY_ACTIVATION,
                 Constants.PREFERENCES_DEFAULT_ACTIVATION));
+        mScaleSettingValueView.setText(String.valueOf(preferencesManager.readFloat(Constants.PREFERENCES_KEY_SCALE,
+                Constants.PREFERENCES_DEFAULT_SCALE)));
         mRadiusSettingValueView.setText(String.valueOf(preferencesManager.readInteger(Constants.PREFERENCES_KEY_RADIUS,
                 Constants.PREFERENCES_DEFAULT_RADIUS)));
         mBorderWidthValue.setText(String.valueOf(preferencesManager.readInteger(Constants.PREFERENCES_KEY_BORDER_WIDTH,
@@ -192,6 +200,8 @@ public class MagnifyingViewSettingsActivity extends Activity
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
 
         preferencesManager.saveBoolean(Constants.PREFERENCES_KEY_ACTIVATION, mActivateSettingValueView.isChecked());
+        preferencesManager.saveFloat(Constants.PREFERENCES_KEY_SCALE,
+                Float.parseFloat(mScaleSettingValueView.getText().toString()));
         preferencesManager.saveInteger(Constants.PREFERENCES_KEY_RADIUS,
                 Integer.parseInt(mRadiusSettingValueView.getText().toString()));
         preferencesManager.saveInteger(Constants.PREFERENCES_KEY_BORDER_WIDTH,

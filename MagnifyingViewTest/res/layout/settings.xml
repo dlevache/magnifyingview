@@ -64,6 +64,49 @@
             android:layout_height="0.7dp"
             android:background="@color/settings_separator" />
 
+        <!-- Scale setting -->
+
+        <LinearLayout
+            android:id="@+id/settings_scale"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/settings_item_background"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="8"
+                android:gravity="center_vertical"
+                android:text="@string/settings_scale"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_color" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0"
+                android:background="@color/settings_separator" />
+
+            <EditText
+                android:id="@+id/settings_scale_value"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:textColor="@color/text_color" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:background="@color/settings_separator" />
+
         <!-- Radius setting -->
 
         <LinearLayout

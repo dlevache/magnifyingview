@@ -72,6 +72,8 @@ public class MagnifyingViewTestActivity extends Activity
         PreferencesManager preferencesManager = PreferencesManager.getInstance(this);
         mMagnifyingView.enableMagnifying(preferencesManager.readBoolean(Constants.PREFERENCES_KEY_ACTIVATION,
                 Constants.PREFERENCES_DEFAULT_ACTIVATION));
+        mMagnifyingView.setScale(preferencesManager.readFloat(Constants.PREFERENCES_KEY_SCALE,
+                Constants.PREFERENCES_DEFAULT_SCALE));
         mMagnifyingView.setCircleRadius(preferencesManager.readInteger(Constants.PREFERENCES_KEY_RADIUS,
                 Constants.PREFERENCES_DEFAULT_RADIUS));
         mMagnifyingView.setBorderWidth(preferencesManager.readInteger(Constants.PREFERENCES_KEY_BORDER_WIDTH,

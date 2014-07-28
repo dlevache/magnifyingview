@@ -25,6 +25,9 @@ public class Constants
     /** Preferences key: activation. */
     public static final String PREFERENCES_KEY_ACTIVATION = "PREFERENCES_KEY_ACTIVATION";
 
+    /** Preferences key: scale. */
+    public static final String PREFERENCES_KEY_SCALE = "PREFERENCES_KEY_SCALE";
+
     /** Preferences key: radius. */
     public static final String PREFERENCES_KEY_RADIUS = "PREFERENCES_KEY_RADIUS";
 
@@ -42,6 +45,9 @@ public class Constants
 
     /** Preferences default value: activation. */
     public static final boolean PREFERENCES_DEFAULT_ACTIVATION = true;
+
+    /** Preferences default value: scale. */
+    public static final int PREFERENCES_DEFAULT_SCALE = 2;
 
     /** Preferences default value: radius. */
     public static final int PREFERENCES_DEFAULT_RADIUS = 100;
