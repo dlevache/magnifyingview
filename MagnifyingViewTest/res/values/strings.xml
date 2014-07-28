@@ -3,5 +3,13 @@
 
     <string name="app_name">MagnifyingView</string>
 
+    
+    <!-- Test activity -->
+    <string name="settings_activate">Activate magnifying</string>
+    <string name="settings_radius">Radius</string>
+    <string name="settings_border_width">Border width</string>
+    <string name="settings_border_color">Border color</string>
+    <string name="settings_offset_x">Offset X</string>
+    <string name="settings_offset_y">Offset Y</string>
 
 </resources>
